@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BooksPage } from '../pages/BooksPage';
 import { BookDetailPage } from '../pages/BookDetailPage';
-import { Book } from '../types/book';
+import type { Book } from '../types/book';
 
 export const AppRoutes: React.FC = () => {
   const [selectedBook, setSelectedBook] = useState<Book | null>(null);

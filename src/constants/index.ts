@@ -37,7 +37,6 @@ export const ZOOM_CONFIG = {
 export const APP_CONFIG = {
   APP_NAME: 'BookVibe',
   APP_DESCRIPTION: 'Бесплатная библиотека электронных книг',
-  COPYRIGHT: '© 2025 BookVibe',
   LIBRARY_NAME: 'Project Gutenberg',
   BOOKS_COUNT: '70,000+',
 };

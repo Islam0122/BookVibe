@@ -10,67 +10,57 @@ interface BookCardProps {
 
 export const BookCard: React.FC<BookCardProps> = ({ book, onRead, onDownload }) => {
   return (
-    <div className="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-2xl">
-      <div className="relative h-64 bg-gradient-to-br from-purple-100 to-blue-100">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-xl transition-shadow duration-300">
+      {/* Изображение обложки */}
+      <div className="relative h-72 bg-gradient-to-br from-orange-100 to-orange-50">
         <img
           src={book.cover}
           alt={book.title}
-          className="w-full h-full object-cover"
+          className="w-full h-full object-contain p-4"
           loading="lazy"
           onError={(e) => {
             const target = e.target as HTMLImageElement;
             target.src = 'https://via.placeholder.com/400x500?text=No+Cover';
           }}
         />
-        <div className="absolute top-2 right-2 bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-lg">
-          {book.language}
-        </div>
-
-        <div className="absolute bottom-2 left-2 bg-black bg-opacity-60 text-white px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1">
-          <Eye size={14} />
-          {book.views.toLocaleString()}
-        </div>
       </div>
 
-      <div className="p-4">
-        <h3 className="font-bold text-lg mb-2 text-gray-800 line-clamp-2 min-h-[3.5rem]">
+      {/* Контент карточки */}
+      <div className="p-5 text-left">
+        <h3 className="text-base font-semibold text-gray-900 mb-3 min-h-[3rem] line-clamp-2">
           {book.title}
         </h3>
 
-        <p className="text-gray-600 text-sm mb-3 line-clamp-1">{book.author}</p>
+        <div className="flex items-center gap-2 mb-2 text-sm text-gray-600">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <span className="line-clamp-1">{book.author}</span>
+        </div>
 
-        {/* Темы/Категории */}
-        {book.subjects.length > 0 && (
-          <div className="mb-3 flex flex-wrap gap-1">
-            {book.subjects.slice(0, 2).map((subject, index) => (
-              <span
-                key={index}
-                className="text-xs bg-purple-100 text-purple-700 px-2 py-1 rounded-full"
-              >
-                {subject.split('--')[0].trim()}
-              </span>
-            ))}
-          </div>
-        )}
-
-        <div className="flex justify-between text-sm text-gray-500 mb-4">
+        <div className="flex items-center gap-2 mb-2 text-sm text-gray-600">
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+          </svg>
           <span>{book.year}</span>
-          <span>{book.views} загрузок</span>
+        </div>
+
+        <div className="flex items-center gap-2 mb-4 text-sm text-gray-600">
+          <Eye size={16} color="green" />
+          <span>{book.views.toLocaleString()} Просмотров</span>
         </div>
 
         <div className="flex gap-2">
           <button
             onClick={() => onRead(book)}
-            disabled={!book.readUrl}
-            className="flex-1 bg-blue-600 hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+            className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2.5 px-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors duration-200"
           >
             <BookOpen size={18} />
             Читать
           </button>
           <button
             onClick={() => onDownload(book)}
-            disabled={!book.downloadUrl}
-            className="flex-1 bg-green-600 hover:bg-green-700 disabled:bg-gray-400 disabled:cursor-not-allowed text-white py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors"
+            className="flex-1 bg-green-500 hover:bg-green-600 text-white py-2.5 px-4 rounded-lg font-medium flex items-center justify-center gap-2 transition-colors duration-200"
           >
             <Download size={18} />
             Скачать

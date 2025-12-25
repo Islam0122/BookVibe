@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BookCard } from '../components/BookCard';
 import { SearchBar } from '../components/SearchBar';
-import { Book } from '../types/book.ts';
+import type { Book } from '../types/book.ts';
 import { fetchBooks, searchBooks, downloadBook } from '../api/booksApi';
 import { Loader2, ChevronLeft, ChevronRight } from 'lucide-react';
 

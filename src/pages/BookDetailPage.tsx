@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Home, Download, ChevronLeft, ChevronRight } from 'lucide-react';
-import { Book } from '../types/book';
+import type { Book } from '../types/book';
 import { ZoomControls } from '../components/ZoomControls';
 import { downloadBook } from '../api/booksApi';
 

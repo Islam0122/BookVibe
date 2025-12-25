@@ -1,18 +1,22 @@
 {
   "name": "bookvibe",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "description": "Веб-приложение для чтения и скачивания бесплатных книг из Project Gutenberg",
+  "author": "Your Name",
+  "license": "MIT",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "lucide-react": "^0.562.0",
     "react": "^19.2.0",
-    "react-dom": "^19.2.0"
+    "react-dom": "^19.2.0",
+    "lucide-react": "^0.263.1"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.1",
